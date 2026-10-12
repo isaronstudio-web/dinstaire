@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Phone, MapPin, Instagram, Facebook, Snowflake, ArrowUpRight } from "lucide-react";
+import { Phone, MapPin, Snowflake, ArrowUpRight, Globe } from "lucide-react";
 import { motion } from "framer-motion";
 
 const currentYear = new Date().getFullYear();
@@ -113,17 +113,17 @@ export default function Footer() {
                 href="https://instagram.com/dinstaire"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                className="px-4 py-2 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-sm"
               >
-                <Instagram className="w-5 h-5" />
+                Instagram
               </a>
               <a
                 href="https://facebook.com/dinstaire"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors"
+                className="px-4 py-2 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary transition-colors text-sm"
               >
-                <Facebook className="w-5 h-5" />
+                Facebook
               </a>
             </div>
           </motion.div>

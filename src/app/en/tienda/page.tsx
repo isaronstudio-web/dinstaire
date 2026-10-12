@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Filter, ArrowRight, ShoppingCart, Compare, Info } from "lucide-react";
+import { Search, ArrowRight, ShoppingCart, Info } from "lucide-react";
 import Link from "next/link";
 
 const products = [

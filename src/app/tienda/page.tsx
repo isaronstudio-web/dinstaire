@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Search, Filter, ArrowRight, ShoppingCart, Compare, Info } from "lucide-react";
+import { Search, ArrowRight, ShoppingCart, GitCompare, Info } from "lucide-react";
 import Link from "next/link";
 
 // Demo products - modo presentación
@@ -169,7 +169,7 @@ export default function TiendaPage() {
         <div className="bg-primary text-white py-3 px-4 sticky top-32 z-30">
           <div className="container mx-auto px-4 md:px-6 flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <Compare className="w-5 h-5" />
+              <GitCompare className="w-5 h-5" />
               <span>{compareList.length} producto(s) seleccionado(s) para comparar</span>
             </div>
             <button
@@ -240,7 +240,7 @@ export default function TiendaPage() {
                           : "border-gray-200 text-muted hover:border-primary"
                       }`}
                     >
-                      <Compare className="w-4 h-4" />
+                      <GitCompare className="w-4 h-4" />
                     </button>
                   </div>
                 </div>
