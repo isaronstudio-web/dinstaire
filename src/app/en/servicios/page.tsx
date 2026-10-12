@@ -16,7 +16,7 @@ const services = [
   {
     icon: ShoppingCart,
     title: "Equipment Sales",
-    description: "Marketing of air conditioning equipment from the best brands in the market. We work with allied suppliers like Aire Import to guarantee top-quality equipment.",
+    description: "Marketing of air conditioning equipment from the best brands in the market. We guarantee top-quality equipment for every need.",
     features: [
       "Equipment of all capacities",
       "Recognized national and international brands",

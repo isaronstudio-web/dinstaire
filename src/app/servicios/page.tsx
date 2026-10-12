@@ -16,14 +16,14 @@ const services = [
   {
     icon: ShoppingCart,
     title: "Venta de Equipos",
-    description: "Comercialización de equipos de aire acondicionado y sistemas de refrigeración de las mejores marcas del mercado. Trabajamos con proveedores aliados como Aire Import para garantizar equipos de primera calidad.",
+    description: "Comercialización de equipos de aire acondicionado y sistemas de refrigeración de las mejores marcas del mercado. Garantizamos equipos de primera calidad para cada necesidad.",
     features: [
       "Equipos de todas las capacidades",
       "Marcas reconocidas nacional e internacional",
       "Asesoría técnica especializada",
       "Garantía en todos los equipos"
     ],
-    color: "bg-blue-500",
+    color: "from-cyan-500 to-blue-600",
   },
   {
     icon: Building2,
@@ -35,7 +35,7 @@ const services = [
       "Proyectos de cualquier escala",
       "Asesoría desde la planificación"
     ],
-    color: "bg-sky-500",
+    color: "from-sky-500 to-blue-600",
   },
   {
     icon: Calculator,
@@ -47,7 +47,7 @@ const services = [
       "Previene deficiencias en enfriamiento",
       "Optimización de consumo energético"
     ],
-    color: "bg-cyan-500",
+    color: "from-cyan-400 to-teal-500",
   },
   {
     icon: Wrench,
@@ -59,7 +59,7 @@ const services = [
       "Trabajos precisos y limpios",
       "Compromiso garantizado"
     ],
-    color: "bg-teal-500",
+    color: "from-teal-500 to-cyan-600",
   },
   {
     icon: Snowflake,
@@ -78,22 +78,24 @@ const services = [
 export default function ServiciosPage() {
   return (
     <div className="pt-24 pb-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* Hero Section - Dark Theme */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-[#050505]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-radial-gradient from-cyan-500/5 via-transparent to-transparent" />
+        
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6">
-              Nuestros Servicios
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              SERVICIOS
             </h1>
-            <p className="text-lg text-muted">
-              Dinstaire abarca todo el ciclo de climatización, desde el diseño en papel 
-              hasta la entrega del equipo funcionando. Más de 40 años de experiencia 
-              respaldan cada trabajo que realizamos.
+            <p className="text-lg text-white/50 font-light">
+              Soluciones integrales de climatización para empresas e industrias. 
+              Desde el diseño hasta la instalación, garantizamos excellence en cada proyecto.
             </p>
           </motion.div>
         </div>
@@ -160,12 +162,16 @@ export default function ServiciosPage() {
               Materiales de Alta Gama
             </h2>
             <p className="text-gray-300 text-lg mb-8">
-              En nuestras instalaciones utilizamos <strong>Lámina P3</strong> (paneles de aluminio preaislado para conductos de aire), 
-              destacándola como una excelente opción técnica que garantiza eficiencia y durabilidad en cada instalación.
+              Utilizamos materiales de primera línea y tecnologías de última generación para garantizar 
+              instalaciones duraderas y eficientes. Cada proyecto es ejecutado con los más altos estándares de calidad.
             </p>
-            <div className="inline-flex items-center gap-4 bg-white/10 px-6 py-3 rounded-xl">
-              <span className="text-amber-400 font-semibold">Aliado estratégico:</span>
-              <span className="text-white text-lg">Aire Import</span>
+            <div className="flex flex-wrap gap-4">
+              {["Certificación ISO", "Garantía Extendida", "Servicio Técnico 24/7"].map((item) => (
+                <div key={item} className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                  <CheckCircle className="w-4 h-4 text-cyan-400" />
+                  <span className="text-sm text-white">{item}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>

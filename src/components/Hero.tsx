@@ -28,8 +28,17 @@ export default function Hero() {
         style={{ y, opacity }}
         className="absolute inset-0 z-0"
       >
-        {/* Dark Gradient Background */}
-        <div className="absolute inset-0 bg-[#050505]" />
+        {/* Hero Image Background */}
+        <div className="absolute inset-0">
+          <img 
+            src="/proyectos/hero.jpg" 
+            alt="Dinstaire Background"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark overlay gradient */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/95 to-[#050505]" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+        </div>
         
         {/* Cyan Glow Effects */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-radial-gradient from-cyan-500/5 via-transparent to-transparent" />
