@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://dinstaire.com/sitemap.xml
+
+# Language alternates
+Link: <https://dinstaire.com/es/>; rel="alternate"; hreflang="es"
+Link: <https://dinstaire.com/en/>; rel="alternate"; hreflang="en"
+Link: <https://dinstaire.com/>; rel="alternate"; hreflang="es"
+
+# Disallow admin
+Disallow: /admin
+Disallow: /api
+
+# Crawl-delay (optional, for respectful crawling)
+Crawl-delay: 1
