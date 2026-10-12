@@ -50,7 +50,7 @@ export default function Navbar() {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "bg-white/90 backdrop-blur-md shadow-md py-3"
+          ? "bg-black/80 backdrop-blur-xl border-b border-white/5 py-3"
           : "bg-transparent py-5"
       }`}
     >
@@ -62,7 +62,7 @@ export default function Navbar() {
               <img src="/proyectos/logo.jpg" alt="Dinstaire" className="w-full h-full object-cover" />
             </div>
             <div>
-              <span className="font-display text-xl font-bold text-secondary">
+              <span className="font-display text-xl font-bold text-white tracking-tight">
                 Dinstaire
               </span>
               <span className="hidden sm:block text-xs text-muted">
@@ -77,7 +77,7 @@ export default function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-secondary hover:text-primary transition-colors font-medium relative group"
+                className="text-white/70 hover:text-cyan-400 transition-colors font-medium text-sm tracking-wide relative group"
               >
                 {link.label}
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
@@ -90,7 +90,7 @@ export default function Navbar() {
             {/* Language Toggle */}
             <button
               onClick={toggleLang}
-              className="flex items-center gap-1 text-secondary hover:text-primary transition-colors"
+              className="flex items-center gap-1 text-white/50 hover:text-cyan-400 transition-colors text-xs border border-white/10 px-2 py-1 rounded"
             >
               <Globe className="w-5 h-5" />
               <span className="text-sm font-semibold uppercase">{lang}</span>
