@@ -20,7 +20,7 @@ export const translations = {
       ctaSecondary: "Ver Proyectos",
       features: [
         { label: "+40 Años de Experiencia", desc: "Trayectoria comprobada" },
-        { label: "Trabajos Correctos", desc: "Nunca ensuciamos su nombre" },
+        { label: "Trabajos de Calidad", desc: "Compromiso garantizado" },
         { label: "Rápidos y Eficientes", desc: "Priorizamos su confort" },
       ],
     },

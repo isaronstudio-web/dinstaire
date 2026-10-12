@@ -17,7 +17,7 @@ export default function Hero() {
 
   const features = [
     { icon: Clock, label: "+40 Años de Experiencia", desc: "Trayectoria comprobada" },
-    { icon: Shield, label: "Trabajos Correctos", desc: "Nunca ensuciamos su nombre" },
+    { icon: Shield, label: "Trabajos de Calidad", desc: "Compromiso garantizado" },
     { icon: Zap, label: "Rápidos y Eficientes", desc: "Priorizamos su confort" },
   ];
 

@@ -57,7 +57,7 @@ const services = [
       "Personal técnico certificado",
       "Cumplimiento de normativas",
       "Trabajos precisos y limpios",
-      "Nunca ensuciamos su nombre"
+      "Compromiso garantizado"
     ],
     color: "bg-teal-500",
   },

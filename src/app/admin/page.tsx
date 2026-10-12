@@ -178,21 +178,9 @@ const handleGoogleLogin = async () => {
               className="w-full bg-white border-2 border-gray-200 text-secondary py-3 px-6 rounded-xl font-semibold flex items-center justify-center gap-3 hover:bg-gray-50 transition-all mb-4"
             >
               <img src="https://www.google.com/favicon.ico" alt="Google" className="w-5 h-5" />
-              Continuar con Google
+              Iniciar sesión
             </button>
-            <p className="text-xs text-muted text-center mt-4">
-              Solo correos autorizados pueden entrar:<br/>
-              isaias09sebastian@gmail.com<br/>
-              caradashy@gmail.com<br/>
-              isaronstudio@gmail.com
-            </p>
             {authError && <p className="text-red-500 text-sm text-center mt-4">{authError}</p>}
-            <p className="text-xs text-muted text-center mt-4">
-              Solo correos de Google autorizados pueden entrar:<br/>
-              isaias09sebastian@gmail.com<br/>
-              caradashy@gmail.com<br/>
-              isaronstudio@gmail.com
-            </p>
           <Link href="/" className="block text-center text-primary mt-4">← Volver al sitio</Link>
         </motion.div>
       </div>
