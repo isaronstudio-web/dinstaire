@@ -58,8 +58,8 @@ export default function Navbar() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-110">
-              <Snowflake className="w-6 h-6 text-white" />
+            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center transition-transform group-hover:scale-110 overflow-hidden">
+              <img src="/proyectos/logo.jpg" alt="Dinstaire" className="w-full h-full object-cover" />
             </div>
             <div>
               <span className="font-display text-xl font-bold text-secondary">

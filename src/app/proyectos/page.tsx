@@ -8,47 +8,39 @@ import Link from "next/link";
 const projects = [
   {
     id: 1,
+    title: "Sistema de Climatización Industrial",
+    client: "Laboratorios Topp, C.A.",
+    location: "Zona Industrial San Pablo, Turmero",
+    year: "2025",
+    category: "Industrial",
+    description: "Proyecto integral de climatización para planta farmacéutica veterinaria. Instalación de sistemas de aire acondicionado industriales de alta capacidad para laboratorios y áreas de producción.",
+    services: ["Cálculo de carga térmica", "Instalación industrial", "Sistemas de precisión"],
+    image: "/proyectos/lab-topp.jpg",
+    icon: Factory,
+  },
+  {
+    id: 2,
     title: "Climatización Corporativa Integral",
     client: "Agua OMI C.A.",
-    location: "Maracay",
+    location: "Maracay, Estado Aragua",
     year: "2024",
     category: "Corporativo",
     description: "Proyecto integral de climatización corporativa, encargándose del traslado, cálculo e instalación industrial completo.",
     services: ["Cálculo de carga térmica", "Instalación industrial", "Mantenimiento"],
+    image: "/proyectos/agua-omi.jpg",
     icon: Building2,
-  },
-  {
-    id: 2,
-    title: "Sistema de Refrigeración",
-    client: "Biocontrol",
-    location: "Las Delicias, Maracay",
-    year: "2023",
-    category: "Industrial",
-    description: "Instalación de sistema de refrigeración para conservación de productos biológicos con altos estándares de calidad.",
-    services: ["Diseño de sistema", "Equipos industriales", "Certificación"],
-    icon: Factory,
   },
   {
     id: 3,
-    title: "Climatización Comercial",
-    client: "Local Comercial",
-    location: "Centro de Maracay",
-    year: "2023",
-    category: "Comercial",
-    description: "Instalación de sistema de climatización para local comercial con alto flujo de clientes.",
-    services: ["Proyecto ejecutivo", "Equipos comerciales", "Instalación"],
-    icon: Store,
-  },
-  {
-    id: 4,
-    title: "Proyecto Corporativo",
-    client: "Oficinas Ejecutivas",
-    location: "Avenida Principal, Maracay",
-    year: "2022",
-    category: "Corporativo",
-    description: "Sistema de climatización centralizado para edificio de oficinas corporativas.",
-    services: ["Sistema central", "Control automatizado", "Mantenimiento"],
-    icon: Building2,
+    title: "Sistema de Refrigeración",
+    client: "Biocontrol",
+    location: "Las Delicias, Maracay",
+    year: "2024",
+    category: "Industrial",
+    description: "Instalación de sistema de refrigeración para conservación de productos biológicos con altos estándares de calidad.",
+    services: ["Diseño de sistema", "Equipos industriales", "Certificación"],
+    image: "/proyectos/biocontrol.jpg",
+    icon: Factory,
   },
 ];
 
@@ -119,7 +111,15 @@ export default function ProyectosPage() {
               >
                 {/* Image Area */}
                 <div className="h-64 bg-gradient-to-br from-sky-100 to-sky-50 flex items-center justify-center relative overflow-hidden">
-                  <project.icon className="w-24 h-24 text-primary/20 group-hover:scale-110 transition-transform" />
+                  {project.image ? (
+                    <img 
+                      src={project.image} 
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <project.icon className="w-24 h-24 text-primary/20 group-hover:scale-110 transition-transform" />
+                  )}
                   <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-primary">
                     {project.category}
                   </div>
