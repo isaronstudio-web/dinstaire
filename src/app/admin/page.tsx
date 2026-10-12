@@ -219,10 +219,10 @@ const handleGoogleLogin = async () => {
   ];
 
   const stats = [
-    { value: projects.length, label: "Proyectos", color: "bg-blue-500" },
-    { value: products.length, label: "Productos", color: "bg-green-500" },
-    { value: messages.filter(m => !m.read).length, label: "Mensajes nuevos", color: "bg-amber-500" },
-    { value: messages.length, label: "Total mensajes", color: "bg-purple-500" },
+    { value: projects.length, label: "Proyectos", color: "bg-blue-500", icon: "📁" },
+    { value: products.length, label: "Productos", color: "bg-green-500", icon: "📦" },
+    { value: messages.filter(m => !m.read).length, label: "Mensajes nuevos", color: "bg-amber-500", icon: "💬" },
+    { value: messages.length, label: "Total mensajes", color: "bg-purple-500", icon: "📨" },
   ];
 
   return (
@@ -262,7 +262,7 @@ const handleGoogleLogin = async () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
               {stats.map((stat, i) => (
                 <div key={i} className="bg-white rounded-2xl p-6 shadow-sm">
-                  <div className={`w-12 h-12 ${stat.color} rounded-xl flex items-center justify-center mb-4`}><stat.icon className="w-6 h-6 text-white" /></div>
+                  <div className={`w-12 h-12 ${stat.color} rounded-xl flex items-center justify-center mb-4 text-2xl`}>{stat.icon}</div>
                   <p className="text-3xl font-bold text-secondary">{stat.value}</p>
                   <p className="text-muted">{stat.label}</p>
                 </div>
