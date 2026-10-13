@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Award, Users, Star } from "lucide-react";
+import Link from "next/link";
 
 const clients = [
   { name: "Agua OMI", logo: "/proyectos/agua-omi.jpg" },
@@ -59,23 +60,20 @@ export default function ClientsSection() {
           
           <div className="flex flex-wrap justify-center items-center gap-8 md:gap-12">
             {clients.map((client, index) => (
-              <motion.div
+              <Link
                 key={client.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                href="/proyectos"
                 className="flex flex-col items-center gap-3 group"
               >
                 <div className="w-32 h-32 md:w-40 md:h-40 bg-white/5 rounded-2xl flex items-center justify-center p-3 border border-white/10 group-hover:border-cyan-500/30 transition-all overflow-hidden">
                   <img 
                     src={client.logo} 
                     alt={client.name}
-                    className="w-full h-full object-contain filter grayscale group-hover:grayscale-0 transition-all"
+                    className="w-full h-full object-contain"
                   />
                 </div>
                 <span className="text-white font-medium text-sm">{client.name}</span>
-              </motion.div>
+              </Link>
             ))}
           </div>
         </motion.div>

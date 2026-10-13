@@ -35,9 +35,9 @@ export default function Hero() {
             alt="Dinstaire Background"
             className="w-full h-full object-cover"
           />
-          {/* Dark overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-b from-[#050505] via-[#050505]/95 to-[#050505]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-transparent to-black/60" />
+          {/* Dark overlay gradient - menos borroso para que se vea la imagen */}
+          <div className="absolute inset-0 bg-gradient-to-b from-[#050505]/70 via-[#050505]/50 to-[#050505]/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
         </div>
         
         {/* Cyan Glow Effects */}
@@ -78,7 +78,7 @@ export default function Hero() {
             CLIMA
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-cyan-200">
-              CONFIBLE
+              CONFIABLE SIEMPRE
             </span>
           </motion.h1>
 

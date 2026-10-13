@@ -65,8 +65,8 @@ export default function Navbar() {
               <span className="font-display text-xl font-bold text-white tracking-tight">
                 Dinstaire
               </span>
-              <span className="hidden sm:block text-xs text-muted">
-                {lang === "es" ? "Climatización" : "Air Conditioning"}
+              <span className="hidden sm:block text-xs text-cyan-400 font-medium">
+                {lang === "es" ? "Clima Confiable Siempre" : "Reliable Climate Always"}
               </span>
             </div>
           </Link>
