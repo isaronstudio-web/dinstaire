@@ -6,14 +6,14 @@ import Link from "next/link";
 
 export default function ContactCTA() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-sky-50">
+    <section className="py-20 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#111]">
       <div className="container mx-auto px-4 md:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-primary rounded-3xl overflow-hidden shadow-2xl"
+          className="bg-[#111] rounded-3xl overflow-hidden border border-white/5 shadow-2xl"
         >
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Left - Content */}
@@ -70,29 +70,29 @@ export default function ContactCTA() {
             </div>
 
             {/* Right - CTA Card */}
-            <div className="bg-white p-8 md:p-12 lg:p-16 flex flex-col justify-center">
+            <div className="bg-[#0a0a0a] p-8 md:p-12 lg:p-16 flex flex-col justify-center border-l border-white/5">
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
               >
-                <h3 className="font-display text-2xl font-bold text-secondary mb-4">
+                <h3 className="font-display text-2xl font-bold text-white mb-4">
                   Solicita tu cotización
                 </h3>
-                <p className="text-muted mb-6">
+                <p className="text-gray-400 mb-6">
                   Cuéntanos sobre tu proyecto y te enviaremos una propuesta personalizada.
                 </p>
                 
                 <Link
                   href="/contacto"
-                  className="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all hover-lift w-full"
+                  className="inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-semibold transition-all hover-lift w-full"
                 >
                   Contactar ahora
                   <ArrowRight className="w-5 h-5" />
                 </Link>
 
-                <p className="text-center text-sm text-muted mt-4">
+                <p className="text-center text-sm text-gray-500 mt-4">
                   Respuesta en menos de 24 horas
                 </p>
               </motion.div>

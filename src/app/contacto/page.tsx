@@ -46,7 +46,7 @@ export default function ContactoPage() {
   return (
     <div className="pt-24 pb-20">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white">
+      <section className="py-20 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#111]">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,10 +54,10 @@ export default function ContactoPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
               Contáctanos
             </h1>
-            <p className="text-lg text-muted">
+            <p className="text-lg text-gray-400">
               ¿Necesitas información sobre nuestros servicios? Estamos listos para ayudarte. 
               Contesta en menos de 24 horas.
             </p>
@@ -75,21 +75,21 @@ export default function ContactoPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary mb-8">
+              <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
                 Información de Contacto
               </h2>
 
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-secondary mb-1">Teléfono / WhatsApp</h3>
-                    <p className="text-muted">+58 424-3222919</p>
+                    <h3 className="font-semibold text-white mb-1">Teléfono / WhatsApp</h3>
+                    <p className="text-gray-400">+58 424-3222919</p>
                     <button
                       onClick={handleWhatsApp}
-                      className="mt-2 inline-flex items-center gap-2 text-primary font-medium"
+                      className="mt-2 inline-flex items-center gap-2 text-cyan-400 font-medium hover:text-cyan-300 transition-colors"
                     >
                       <MessageCircle className="w-4 h-4" />
                       Enviar mensaje por WhatsApp
@@ -98,34 +98,34 @@ export default function ContactoPage() {
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-secondary mb-1">Dirección</h3>
-                    <p className="text-muted">Maracay, Estado Aragua</p>
-                    <p className="text-sm text-muted-light">Avenida Intercomunal</p>
+                    <h3 className="font-semibold text-white mb-1">Dirección</h3>
+                    <p className="text-gray-400">Maracay, Estado Aragua</p>
+                    <p className="text-sm text-gray-500">Avenida Intercomunal</p>
                   </div>
                 </div>
 
                 <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                    <Clock className="w-6 h-6 text-cyan-400" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-secondary mb-1">Horario de Atención</h3>
-                    <p className="text-muted">Lunes a Viernes: 7:00am - 5:00pm</p>
-                    <p className="text-sm text-muted-light">Sábados: 8:00am - 12:00pm</p>
+                    <h3 className="font-semibold text-white mb-1">Horario de Atención</h3>
+                    <p className="text-gray-400">Lunes a Viernes: 7:00am - 5:00pm</p>
+                    <p className="text-sm text-gray-500">Sábados: 8:00am - 12:00pm</p>
                   </div>
                 </div>
               </div>
 
               {/* Map Placeholder */}
-              <div className="mt-8 h-64 bg-gradient-to-br from-sky-100 to-sky-50 rounded-2xl flex items-center justify-center">
+              <div className="mt-8 h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center border border-white/5">
                 <div className="text-center">
-                  <MapPin className="w-12 h-12 text-primary/30 mx-auto mb-2" />
-                  <p className="text-muted">Mapa de ubicación</p>
-                  <p className="text-sm text-muted-light">Maracay, Aragua</p>
+                  <MapPin className="w-12 h-12 text-cyan-400/30 mx-auto mb-2" />
+                  <p className="text-gray-400">Mapa de ubicación</p>
+                  <p className="text-sm text-gray-500">Maracay, Aragua</p>
                 </div>
               </div>
             </motion.div>
@@ -136,8 +136,8 @@ export default function ContactoPage() {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
             >
-              <div className="bg-white rounded-2xl shadow-lg p-8">
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-secondary mb-6">
+              <div className="bg-[#111] rounded-2xl p-8 border border-white/5">
+                <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
                   Envíanos un Mensaje
                 </h2>
 
@@ -145,17 +145,17 @@ export default function ContactoPage() {
                   <motion.div
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-green-50 border border-green-200 rounded-xl p-4 mb-6 flex items-center gap-3"
+                    className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 mb-6 flex items-center gap-3"
                   >
-                    <CheckCircle className="w-5 h-5 text-green-500" />
-                    <p className="text-green-700">¡Mensaje enviado exitosamente! Te contactaremos pronto.</p>
+                    <CheckCircle className="w-5 h-5 text-green-400" />
+                    <p className="text-green-400">¡Mensaje enviado exitosamente! Te contactaremos pronto.</p>
                   </motion.div>
                 )}
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div>
-                      <label className="block text-sm font-medium text-secondary mb-2">
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
                         Nombre completo *
                       </label>
                       <input
@@ -164,12 +164,12 @@ export default function ContactoPage() {
                         value={formData.nombre}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
                         placeholder="Tu nombre"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-secondary mb-2">
+                      <label className="block text-sm font-medium text-gray-300 mb-2">
                         Teléfono *
                       </label>
                       <input
@@ -178,14 +178,14 @@ export default function ContactoPage() {
                         value={formData.telefono}
                         onChange={handleChange}
                         required
-                        className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                        className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
                         placeholder="+58 412-1234567"
                       />
                     </div>
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Correo electrónico
                     </label>
                     <input
@@ -193,20 +193,20 @@ export default function ContactoPage() {
                       name="email"
                       value={formData.email}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
                       placeholder="tu@email.com"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Servicio de interés
                     </label>
                     <select
                       name="servicio"
                       value={formData.servicio}
                       onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white"
                     >
                       <option value="">Selecciona un servicio</option>
                       <option value="venta">Venta de Equipos</option>
@@ -219,7 +219,7 @@ export default function ContactoPage() {
                   </div>
 
                   <div>
-                    <label className="block text-sm font-medium text-secondary mb-2">
+                    <label className="block text-sm font-medium text-gray-300 mb-2">
                       Mensaje *
                     </label>
                     <textarea
@@ -228,7 +228,7 @@ export default function ContactoPage() {
                       onChange={handleChange}
                       required
                       rows={5}
-                      className="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-primary focus:ring-2 focus:ring-primary/20 outline-none transition-all resize-none"
+                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all resize-none text-white placeholder-gray-500"
                       placeholder="Cuéntanos sobre tu proyecto o necesidad..."
                     />
                   </div>
@@ -236,11 +236,11 @@ export default function ContactoPage() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white py-4 rounded-xl font-semibold transition-all hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black py-4 rounded-xl font-semibold transition-all hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
                         Enviando...
                       </>
                     ) : (

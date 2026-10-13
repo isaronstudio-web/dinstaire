@@ -46,7 +46,7 @@ const services = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-20 bg-gradient-to-b from-white to-sky-50">
+    <section className="py-20 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#111]">
       <div className="container mx-auto px-4 md:px-6">
         {/* Section Header */}
         <motion.div
@@ -56,14 +56,14 @@ export default function ServicesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-1.5 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
+          <span className="inline-block px-4 py-1.5 bg-cyan-500/10 text-cyan-400 rounded-full text-sm font-medium mb-4 border border-cyan-500/20">
            Nuestros Servicios
           </span>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-secondary mb-4">
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
             Soluciones Completas en<br className="hidden md:block" /> Climatización
           </h2>
-          <p className="text-muted max-w-2xl mx-auto">
-            Dinstaire abarca todo el ciclo de climatización, desde el diseño en papel hasta la entrega del equipo funcionando.
+          <p className="text-gray-400 max-w-2xl mx-auto">
+            Más de 33 años de experiencia brindando soluciones integrales de climatización para empresas e industrias.
           </p>
         </motion.div>
 
@@ -77,20 +77,20 @@ export default function ServicesSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               whileHover={{ y: -10 }}
-              className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100"
+              className="group bg-[#0a0a0a] rounded-2xl p-8 border border-white/5 hover:border-cyan-500/30 transition-all duration-300"
             >
               <div className={`w-14 h-14 rounded-xl ${service.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
                 <service.icon className="w-7 h-7 text-white" />
               </div>
-              <h3 className="font-display text-xl font-semibold text-secondary mb-3">
+              <h3 className="font-display text-xl font-semibold text-white mb-3">
                 {service.title}
               </h3>
-              <p className="text-muted mb-4">
+              <p className="text-gray-400 mb-4">
                 {service.description}
               </p>
               <Link 
                 href="/servicios" 
-                className="inline-flex items-center gap-2 text-primary font-medium group-hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-cyan-400 font-medium group-hover:gap-3 transition-all"
               >
                 Ver más
                 <ArrowRight className="w-4 h-4" />
@@ -105,18 +105,21 @@ export default function ServicesSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 bg-secondary rounded-2xl p-8 md:p-10 text-center"
+          className="mt-12 bg-[#111] rounded-2xl p-8 md:p-10 text-center border border-white/5"
         >
           <h3 className="font-display text-2xl md:text-3xl font-bold text-white mb-4">
             Materiales de Alta Gama
           </h3>
           <p className="text-gray-300 max-w-2xl mx-auto mb-6">
             En nuestras instalaciones utilizamos <strong>Lámina P3</strong> (paneles de aluminio preaislado para conductos de aire), 
-            destacándola como una excelente opción técnica que garantiza eficiencia y durabilidad.
+            destacándola como una excelente opción técnica que garantiza eficiencia y durabilidad en cada proyecto.
           </p>
-          <div className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-lg">
-            <span className="text-amber-400 font-semibold">Aliado estratégico:</span>
-            <span className="text-white">Aire Import</span>
+          <div className="flex flex-wrap justify-center gap-3">
+            {["Certificación ISO 9001", "Garantía Extendida", "Soporte técnico 24/7"].map((item) => (
+              <div key={item} className="flex items-center gap-2 bg-cyan-500/10 px-4 py-2 rounded-lg border border-cyan-500/20">
+                <span className="text-cyan-400 text-sm font-medium">{item}</span>
+              </div>
+            ))}
           </div>
         </motion.div>
       </div>

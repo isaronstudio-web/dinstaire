@@ -78,22 +78,22 @@ const services = [
 export default function ServiciosPageEN() {
   return (
     <div className="pt-24 pb-20">
-      {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
+      {/* Hero Section - Dark */}
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-[#050505]" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6">
-              Our Services
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              SERVICES
             </h1>
-            <p className="text-lg text-muted">
-              Dinstaire covers the entire air conditioning cycle, from design on paper 
-              to delivering the equipment working. More than 40 years of experience 
-              back every job we do.
+            <p className="text-lg text-white/50 font-light">
+              Complete air conditioning solutions for businesses and industries. 
+              From design to installation, we guarantee excellence in every project.
             </p>
           </motion.div>
         </div>
@@ -118,17 +118,17 @@ export default function ServiciosPageEN() {
                   <div className={`w-16 h-16 rounded-2xl ${service.color} flex items-center justify-center mb-6`}>
                     <service.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h2 className="font-display text-3xl md:text-4xl font-bold text-secondary mb-4">
+                  <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
                     {service.title}
                   </h2>
-                  <p className="text-muted text-lg mb-6">
+                  <p className="text-gray-400 text-lg mb-6">
                     {service.description}
                   </p>
                   <ul className="space-y-3">
                     {service.features.map((feature) => (
                       <li key={feature} className="flex items-center gap-3">
-                        <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0" />
-                        <span className="text-secondary">{feature}</span>
+                        <CheckCircle className="w-5 h-5 text-green-400 shrink-0" />
+                        <span className="text-gray-300">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -145,8 +145,8 @@ export default function ServiciosPageEN() {
         </div>
       </section>
 
-      {/* Materials Section */}
-      <section className="py-20 bg-secondary">
+      {/* Materials Section - Dark */}
+      <section className="py-20 bg-[#111]">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,36 +157,40 @@ export default function ServiciosPageEN() {
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6">
               High-End Materials
             </h2>
-            <p className="text-gray-300 text-lg mb-8">
-              In our installations we use <strong>Sheet P3</strong> (pre-insulated aluminum panels for air ducts), 
-              standing out as an excellent technical option that guarantees efficiency and durability in every installation.
+            <p className="text-gray-400 text-lg mb-8">
+              We use first-rate materials and cutting-edge technologies to guarantee 
+              durable and efficient installations. Each project is executed with the highest quality standards.
             </p>
-            <div className="inline-flex items-center gap-4 bg-white/10 px-6 py-3 rounded-xl">
-              <span className="text-amber-400 font-semibold">Strategic partner:</span>
-              <span className="text-white text-lg">Aire Import</span>
+            <div className="flex flex-wrap gap-4 justify-center">
+              {["ISO Certification", "Extended Warranty", "24/7 Technical Service"].map((item) => (
+                <div key={item} className="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-lg border border-white/10">
+                  <CheckCircle className="w-4 h-4 text-cyan-400" />
+                  <span className="text-sm text-white">{item}</span>
+                </div>
+              ))}
             </div>
           </motion.div>
         </div>
       </section>
 
-      {/* CTA */}
-      <section className="py-20">
+      {/* CTA - Dark */}
+      <section className="py-20 bg-gradient-to-b from-[#050505] to-[#111]">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="bg-primary rounded-3xl p-8 md:p-12 text-center"
+            className="bg-cyan-500 rounded-3xl p-8 md:p-12 text-center"
           >
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-black mb-4">
               Need any of our services?
             </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
+            <p className="text-black/70 text-lg mb-8 max-w-2xl mx-auto">
               Contact us today for a free consultation. Our team will help you find the best solution.
             </p>
             <Link
               href="/en/contacto"
-              className="inline-flex items-center gap-2 bg-white text-primary px-8 py-4 rounded-xl font-semibold hover:bg-gray-100 transition-all hover-lift"
+              className="inline-flex items-center gap-2 bg-black text-white px-8 py-4 rounded-xl font-semibold hover:bg-black/80 transition-all hover-lift"
             >
               Request Quote
               <ArrowRight className="w-5 h-5" />

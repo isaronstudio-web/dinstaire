@@ -52,21 +52,22 @@ export default function ProyectosPageEN() {
 
   return (
     <div className="pt-24 pb-20">
-      <section className="py-20 bg-gradient-to-b from-sky-50 to-white">
-        <div className="container mx-auto px-4 md:px-6">
+      <section className="py-24 relative">
+        <div className="absolute inset-0 bg-[#050505]" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center max-w-3xl mx-auto">
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-secondary mb-6">Completed Projects</h1>
-            <p className="text-lg text-muted">More than 40 years of experience back each project. We have success stories in companies of all sizes.</p>
+            <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">PROJECTS</h1>
+            <p className="text-lg text-white/50 font-light">Success stories that back our trajectory. More than 40 years guaranteeing the best environment for leading companies.</p>
           </motion.div>
         </div>
       </section>
 
-      <section className="py-8 bg-white border-b">
+      <section className="py-6 bg-[#0A0A0A] border-b border-white/5">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex flex-wrap items-center justify-center gap-4">
-            <Filter className="w-5 h-5 text-muted" />
+            <Filter className="w-5 h-5 text-gray-500" />
             {categories.map((cat) => (
-              <button key={cat} onClick={() => setFilter(cat)} className={`px-6 py-2 rounded-full font-medium transition-all ${filter === cat ? "bg-primary text-white" : "bg-gray-100 text-secondary hover:bg-gray-200"}`}>{cat}</button>
+              <button key={cat} onClick={() => setFilter(cat)} className={`px-6 py-2 rounded-full font-medium transition-all text-sm ${filter === cat ? "bg-cyan-500 text-black" : "bg-white/5 text-white/60 hover:bg-white/10 border border-white/10"}`}>{cat}</button>
             ))}
           </div>
         </div>
@@ -76,8 +77,8 @@ export default function ProyectosPageEN() {
         <div className="container mx-auto px-4 md:px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {filteredProjects.map((project, index) => (
-              <motion.div key={project.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all group">
-                <div className="h-64 bg-gradient-to-br from-sky-100 to-sky-50 flex items-center justify-center relative overflow-hidden">
+              <motion.div key={project.id} initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: index * 0.1 }} className="bg-[#0A0A0A] rounded-2xl overflow-hidden border border-white/5 hover:border-cyan-500/30 transition-all group">
+                <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center relative overflow-hidden">
                   {project.image ? (
                     <img 
                       src={project.image} 
@@ -85,15 +86,15 @@ export default function ProyectosPageEN() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                     />
                   ) : (
-                    <project.icon className="w-24 h-24 text-primary/20 group-hover:scale-110 transition-transform" />
+                    <project.icon className="w-24 h-24 text-cyan-400/20 group-hover:scale-110 transition-transform" />
                   )}
-                  <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium text-primary">{project.category}</div>
+                  <div className="absolute top-4 right-4 px-3 py-1 bg-cyan-500/90 backdrop-blur-sm rounded-full text-sm font-medium text-black">{project.category}</div>
                 </div>
                 <div className="p-8">
-                  <div className="flex items-center gap-4 text-sm text-muted mb-3"><span>{project.client}</span><span>•</span><span>{project.year}</span></div>
-                  <h3 className="font-display text-2xl font-semibold text-secondary mb-3">{project.titleEN}</h3>
-                  <p className="text-muted mb-4">{project.descriptionEN}</p>
-                  <p className="text-sm text-muted-light">📍 {project.location}</p>
+                  <div className="flex items-center gap-4 text-sm text-gray-500 mb-3"><span>{project.client}</span><span>•</span><span>{project.year}</span></div>
+                  <h3 className="font-display text-2xl font-semibold text-white mb-3">{project.titleEN}</h3>
+                  <p className="text-gray-400 mb-4">{project.descriptionEN}</p>
+                  <p className="text-sm text-gray-500">📍 {project.location}</p>
                 </div>
               </motion.div>
             ))}
@@ -101,12 +102,12 @@ export default function ProyectosPageEN() {
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-b from-white to-sky-50">
+      <section className="py-20 bg-gradient-to-b from-[#050505] to-[#111]">
         <div className="container mx-auto px-4 md:px-6">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-secondary rounded-3xl p-8 md:p-12 text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="bg-[#111] rounded-3xl p-8 md:p-12 text-center border border-white/5">
             <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-4">Do you have a project in mind?</h2>
-            <p className="text-gray-300 text-lg mb-8 max-w-2xl mx-auto">Tell us about your project and we will send you a personalized proposal.</p>
-            <Link href="/en/contacto" className="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-xl font-semibold transition-all hover-lift">Discuss my project <ArrowRight className="w-5 h-5" /></Link>
+            <p className="text-gray-400 text-lg mb-8 max-w-2xl mx-auto">Tell us about your project and we will send you a personalized proposal.</p>
+            <Link href="/en/contacto" className="inline-flex items-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black px-8 py-4 rounded-xl font-semibold transition-all hover-lift">Discuss my project <ArrowRight className="w-5 h-5" /></Link>
           </motion.div>
         </div>
       </section>
