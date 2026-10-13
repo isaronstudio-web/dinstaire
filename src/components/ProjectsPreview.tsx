@@ -10,6 +10,7 @@ const projects = [
     client: "Agua OMI C.A.",
     location: "Maracay",
     category: "Corporativo",
+    image: "/proyectos/agua-omi.jpg",
     icon: Building2,
     description: "Proyecto integral de climatización corporativa, encargándose del traslado, cálculo e instalación industrial.",
   },
@@ -18,6 +19,7 @@ const projects = [
     client: "Biocontrol",
     location: "Las Delicias, Maracay",
     category: "Industrial",
+    image: "/proyectos/biocontrol.jpg",
     icon: Factory,
     description: "Instalación de sistema de refrigeración para conservación de productos biológicos.",
   },
@@ -64,9 +66,17 @@ export default function ProjectsPreview() {
               whileHover={{ y: -5 }}
               className="group relative bg-[#0a0a0a] rounded-2xl overflow-hidden border border-white/5 hover:border-cyan-500/30 transition-all"
             >
-              {/* Image Placeholder */}
-              <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center">
-                <project.icon className="w-20 h-20 text-cyan-400/20 group-hover:scale-110 transition-transform" />
+              {/* Image */}
+              <div className="h-64 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                {project.image ? (
+                  <img 
+                    src={project.image} 
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <project.icon className="w-20 h-20 text-cyan-400/20 group-hover:scale-110 transition-transform" />
+                )}
               </div>
 
               {/* Content */}

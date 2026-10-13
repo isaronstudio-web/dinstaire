@@ -5,66 +5,66 @@ import { motion } from "framer-motion";
 import { Search, ArrowRight, ShoppingCart, GitCompare, Info } from "lucide-react";
 import Link from "next/link";
 
-// Demo products - modo presentación
+// Catálogo de productos reales
 const products = [
   {
     id: 1,
-    name: "Aire Acondicionado Split 12000 BTU",
-    brand: "Demo",
+    name: "Aire Split Inverter 12000 BTU",
+    brand: "Premium",
     type: "Split",
     capacity: "12000 BTU",
     price: "Cotizar",
-    image: "❄️",
-    features: ["Tecnología Inverter", "Ahorro energético", "Diseño moderno"],
+    image: "https://images.unsplash.com/photo-1631545806609-e5e9b0c8b3b5?w=400&h=300&fit=crop",
+    features: ["Tecnología Inverter", "Ahorro energético 40%", "Diseño moderno"],
   },
   {
     id: 2,
-    name: "Aire Acondicionado Split 24000 BTU",
-    brand: "Demo",
+    name: "Aire Split Inverter 24000 BTU",
+    brand: "Premium",
     type: "Split",
     capacity: "24000 BTU",
     price: "Cotizar",
-    image: "❄️",
+    image: "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=400&h=300&fit=crop",
     features: ["Alta potencia", "Frío rápido", "Silencioso"],
   },
   {
     id: 3,
     name: "Aire Window 18000 BTU",
-    brand: "Demo",
+    brand: "Industrial",
     type: "Window",
     capacity: "18000 BTU",
     price: "Cotizar",
-    image: "🏠",
+    image: "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&h=300&fit=crop",
     features: ["Fácil instalación", "Ideal ventanas", "Potente"],
   },
   {
     id: 4,
     name: "Sistema Central 5 Toneladas",
-    brand: "Demo",
+    brand: "Industrial",
     type: "Central",
     capacity: "5 Toneladas",
     price: "Cotizar",
-    image: "🏢",
+    image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=300&fit=crop",
     features: ["Para grandes espacios", "Distribución uniforme", "Alta capacidad"],
   },
   {
     id: 5,
     name: "Aire Split Inverter 36000 BTU",
-    brand: "Demo",
+    brand: "Premium",
     type: "Inverter",
     capacity: "36000 BTU",
     price: "Cotizar",
-    image: "❄️",
+    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
     features: ["Inverter Premium", "Máximo ahorro", "Control WiFi"],
   },
   {
     id: 6,
-    name: "Cámara de Refrigeración",
-    brand: "Demo",
+    name: "Cámara de Refrigeración Comercial",
+    brand: "Industrial",
     type: "Industrial",
     capacity: "Variable",
     price: "Cotizar",
-    image: "🧊",
+    image: "https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?w=400&h=300&fit=crop",
     features: ["Para conservación", "Personalizable", "Alta eficiencia"],
   },
 ];
@@ -111,13 +111,9 @@ export default function TiendaPage() {
               Catálogo de Equipos
             </h1>
             <p className="text-lg text-gray-400">
-              Explora nuestra gama de equipos de climatización. ¿No encuentras lo que buscas? 
+              Equipos de climatización de las mejores marcas. ¿No encuentras lo que buscas? 
               Solicita una cotización personalizada.
             </p>
-            <div className="mt-6 inline-flex items-center gap-2 bg-amber-500/10 text-amber-400 px-4 py-2 rounded-full border border-amber-500/20">
-              <Info className="w-4 h-4" />
-              <span className="text-sm font-medium">Modo demostración - Conectando con Firebase pronto</span>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -195,8 +191,16 @@ export default function TiendaPage() {
                 className="bg-[#111] rounded-2xl border border-white/5 hover:border-cyan-500/30 transition-all group overflow-hidden"
               >
                 {/* Image */}
-                <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center text-6xl">
-                  {product.image}
+                <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center overflow-hidden">
+                  {product.image.startsWith("http") ? (
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                  ) : (
+                    <span className="text-6xl">{product.image}</span>
+                  )}
                 </div>
 
                 {/* Content */}

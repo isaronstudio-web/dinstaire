@@ -1,52 +1,102 @@
 "use client";
 
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, MessageCircle } from "lucide-react";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Phone, MapPin, Clock, MessageCircle, Send, ArrowRight, Bot, Sparkles } from "lucide-react";
+
+interface Message {
+  id: number;
+  text: string;
+  isUser: boolean;
+  options?: string[];
+}
+
+const initialMessages: Message[] = [
+  {
+    id: 1,
+    text: "¡Hola! 👋 Bienvenido a Dinstaire. Soy tu asistente virtual y estoy aquí para ayudarte.",
+    isUser: false,
+  },
+  {
+    id: 2,
+    text: "¿Sobre qué servicio necesitas información?",
+    isUser: false,
+    options: [
+      "💰 Cotización de equipos",
+      "🏢 Proyectos corporativos",
+      "🔧 Instalación profesional",
+      "❓ Otra consulta"
+    ]
+  }
+];
+
+const quickResponses: Record<string, string> = {
+  "💰 Cotización de equipos": "¡Excelente! Tenemos equipos de todas las capacidades para tu hogar o empresa. ¿Qué tipo de aire acondicionado necesitas? (Split, Window, Central, Inverter)",
+  "🏢 Proyectos corporativos": "¡Perfecto! Realizamos proyectos de climatización para oficinas, naves industriales y comercios. ¿De qué tamaño es el espacio que necesitas climatizar?",
+  "🔧 Instalación profesional": "Nuestro equipo técnico certificado realiza instalaciones bajo normativas de seguridad. ¿Ya tienes el equipo o necesitas que te asesoremos?",
+  "❓ Otra consulta": "¡Con gusto te ayudamos! Escríbenos directamente y responderemos en menos de 24 horas."
+};
 
 export default function ContactoPage() {
-  const [formData, setFormData] = useState({
-    nombre: "",
-    telefono: "",
-    email: "",
-    servicio: "",
-    mensaje: "",
-  });
-  const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [messages, setMessages] = useState<Message[]>(initialMessages);
+  const [inputValue, setInputValue] = useState("");
+  const [isTyping, setIsTyping] = useState(false);
+  const [showOptions, setShowOptions] = useState(true);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
+  useEffect(() => {
+    scrollToBottom();
+  }, [messages]);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setStatus("success");
-    setIsSubmitting(false);
-    setFormData({
-      nombre: "",
-      telefono: "",
-      email: "",
-      servicio: "",
-      mensaje: "",
-    });
+  const handleOptionClick = (option: string) => {
+    // Add user message
+    const userMessage: Message = {
+      id: Date.now(),
+      text: option,
+      isUser: true
+    };
+    setMessages(prev => [...prev, userMessage]);
+    setShowOptions(false);
+
+    // Simulate typing
+    setIsTyping(true);
+    setTimeout(() => {
+      setIsTyping(false);
+      const response = quickResponses[option] || "Gracias por tu mensaje. Un asesor te contactará pronto.";
+      
+      const botMessage: Message = {
+        id: Date.now() + 1,
+        text: response,
+        isUser: false
+      };
+      setMessages(prev => [...prev, botMessage]);
+      
+      // Add final message with WhatsApp CTA
+      setTimeout(() => {
+        const ctaMessage: Message = {
+          id: Date.now() + 2,
+          text: "Para una respuesta más rápida, chatea con nosotros directamente por WhatsApp. ¡Te atenderemos con gusto! 💬",
+          isUser: false
+        };
+        setMessages(prev => [...prev, ctaMessage]);
+      }, 1500);
+    }, 1000);
   };
 
-  const handleWhatsApp = () => {
-    const message = `Hola, necesito información sobre: ${formData.servicio || "servicios de climatización"}\n\nNombre: ${formData.nombre}\nTeléfono: ${formData.telefono}`;
+  const handleSendToWhatsApp = () => {
+    const message = "Hola, necesito información sobre los servicios de climatización de Dinstaire";
     const url = `https://wa.me/584243222919?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank");
   };
 
   return (
-    <div className="pt-24 pb-20">
+    <div className="pt-24 pb-20 min-h-screen">
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#111]">
+      <section className="py-12 bg-gradient-to-b from-[#050505] via-[#0a0a0a] to-[#111]">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -54,205 +104,198 @@ export default function ContactoPage() {
             transition={{ duration: 0.6 }}
             className="text-center max-w-3xl mx-auto"
           >
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Contáctanos
+            <div className="inline-flex items-center gap-2 bg-cyan-500/10 border border-cyan-500/20 px-4 py-2 rounded-full mb-4">
+              <Bot className="w-4 h-4 text-cyan-400" />
+              <span className="text-cyan-400 text-sm font-medium">Asistente Virtual</span>
+            </div>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+              ¿En qué te ayudamos?
             </h1>
             <p className="text-lg text-gray-400">
-              ¿Necesitas información sobre nuestros servicios? Estamos listos para ayudarte. 
-              Contesta en menos de 24 horas.
+              Chatea con nosotros o contáctanos directamente. Estamos listos para atenderte.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Contact Info & Form */}
-      <section className="py-12">
+      <section className="py-8">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-8">
-                Información de Contacto
-              </h2>
-
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <Phone className="w-6 h-6 text-cyan-400" />
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Chat Interface */}
+            <div className="lg:col-span-2">
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="bg-[#111] rounded-2xl border border-white/5 overflow-hidden"
+              >
+                {/* Chat Header */}
+                <div className="bg-[#0a0a0a] px-6 py-4 border-b border-white/5 flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-cyan-500 flex items-center justify-center">
+                    <img src="/proyectos/logo.jpg" alt="Dinstaire" className="w-full h-full object-cover rounded-full" />
                   </div>
                   <div>
-                    <h3 className="font-semibold text-white mb-1">Teléfono / WhatsApp</h3>
-                    <p className="text-gray-400">+58 424-3222919</p>
-                    <button
-                      onClick={handleWhatsApp}
-                      className="mt-2 inline-flex items-center gap-2 text-cyan-400 font-medium hover:text-cyan-300 transition-colors"
+                    <h3 className="font-semibold text-white">Dinstaire</h3>
+                    <p className="text-xs text-cyan-400 flex items-center gap-1">
+                      <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse"></span>
+                      En línea
+                    </p>
+                  </div>
+                </div>
+
+                {/* Messages */}
+                <div className="h-[400px] overflow-y-auto p-6 space-y-4">
+                  <AnimatePresence>
+                    {messages.map((message) => (
+                      <motion.div
+                        key={message.id}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`flex ${message.isUser ? 'justify-end' : 'justify-start'}`}
+                      >
+                        <div className={`max-w-[80%] ${
+                          message.isUser 
+                            ? 'bg-cyan-500 text-black px-4 py-3 rounded-2xl rounded-br-md' 
+                            : 'bg-[#0a0a0a] text-white px-4 py-3 rounded-2xl rounded-bl-md border border-white/10'
+                        }`}>
+                          <p className="text-sm">{message.text}</p>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </AnimatePresence>
+                  
+                  {isTyping && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="flex justify-start"
                     >
-                      <MessageCircle className="w-4 h-4" />
-                      Enviar mensaje por WhatsApp
-                    </button>
-                  </div>
+                      <div className="bg-[#0a0a0a] px-4 py-3 rounded-2xl rounded-bl-md border border-white/10">
+                        <div className="flex gap-1">
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></span>
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></span>
+                          <span className="w-2 h-2 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                  <div ref={messagesEndRef} />
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <MapPin className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white mb-1">Dirección</h3>
-                    <p className="text-gray-400">Maracay, Estado Aragua</p>
-                    <p className="text-sm text-gray-500">Avenida Intercomunal</p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
-                    <Clock className="w-6 h-6 text-cyan-400" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-white mb-1">Horario de Atención</h3>
-                    <p className="text-gray-400">Lunes a Viernes: 7:00am - 5:00pm</p>
-                    <p className="text-sm text-gray-500">Sábados: 8:00am - 12:00pm</p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Map Placeholder */}
-              <div className="mt-8 h-64 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center border border-white/5">
-                <div className="text-center">
-                  <MapPin className="w-12 h-12 text-cyan-400/30 mx-auto mb-2" />
-                  <p className="text-gray-400">Mapa de ubicación</p>
-                  <p className="text-sm text-gray-500">Maracay, Aragua</p>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Contact Form */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-            >
-              <div className="bg-[#111] rounded-2xl p-8 border border-white/5">
-                <h2 className="font-display text-2xl md:text-3xl font-bold text-white mb-6">
-                  Envíanos un Mensaje
-                </h2>
-
-                {status === "success" && (
+                {/* Quick Options */}
+                {showOptions && (
                   <motion.div
-                    initial={{ opacity: 0, y: -10 }}
+                    initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="bg-green-500/10 border border-green-500/20 rounded-xl p-4 mb-6 flex items-center gap-3"
+                    className="px-6 pb-4"
                   >
-                    <CheckCircle className="w-5 h-5 text-green-400" />
-                    <p className="text-green-400">¡Mensaje enviado exitosamente! Te contactaremos pronto.</p>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {initialMessages[1].options?.map((option) => (
+                        <button
+                          key={option}
+                          onClick={() => handleOptionClick(option)}
+                          className="text-left px-4 py-3 bg-[#0a0a0a] hover:bg-cyan-500/10 border border-white/10 hover:border-cyan-500/30 rounded-xl text-sm text-gray-300 hover:text-white transition-all"
+                        >
+                          {option}
+                        </button>
+                      ))}
+                    </div>
                   </motion.div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Nombre completo *
-                      </label>
-                      <input
-                        type="text"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
-                        placeholder="Tu nombre"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-sm font-medium text-gray-300 mb-2">
-                        Teléfono *
-                      </label>
-                      <input
-                        type="tel"
-                        name="telefono"
-                        value={formData.telefono}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
-                        placeholder="+58 412-1234567"
-                      />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Correo electrónico
-                    </label>
-                    <input
-                      type="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white placeholder-gray-500"
-                      placeholder="tu@email.com"
-                    />
-                  </div>
-
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Servicio de interés
-                    </label>
-                    <select
-                      name="servicio"
-                      value={formData.servicio}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all text-white"
+                {/* WhatsApp CTA */}
+                {!showOptions && (
+                  <div className="px-6 pb-6">
+                    <button
+                      onClick={handleSendToWhatsApp}
+                      className="w-full inline-flex items-center justify-center gap-2 bg-green-500 hover:bg-green-400 text-white px-6 py-4 rounded-xl font-semibold transition-all hover-lift"
                     >
-                      <option value="">Selecciona un servicio</option>
-                      <option value="venta">Venta de Equipos</option>
-                      <option value="proyectos">Proyectos Corporativos</option>
-                      <option value="calculo">Cálculo de Carga Térmica</option>
-                      <option value="instalacion">Instalación Profesional</option>
-                      <option value="refrigeracion">Refrigeración Industrial</option>
-                      <option value="otro">Otro</option>
-                    </select>
+                      <MessageCircle className="w-5 h-5" />
+                      Continuar en WhatsApp
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </div>
+                )}
+              </motion.div>
+            </div>
+
+            {/* Contact Info */}
+            <div className="space-y-6">
+              {/* Info Cards */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="bg-[#111] rounded-2xl p-6 border border-white/5"
+              >
+                <h3 className="font-display text-xl font-bold text-white mb-6">
+                  Otras formas de contacto
+                </h3>
+                
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-6 h-6 text-green-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">WhatsApp</h4>
+                      <p className="text-gray-400">+58 424-3222919</p>
+                      <button
+                        onClick={handleSendToWhatsApp}
+                        className="mt-2 text-green-400 text-sm font-medium hover:text-green-300 transition-colors"
+                      >
+                        Escribir ahora →
+                      </button>
+                    </div>
                   </div>
 
-                  <div>
-                    <label className="block text-sm font-medium text-gray-300 mb-2">
-                      Mensaje *
-                    </label>
-                    <textarea
-                      name="mensaje"
-                      value={formData.mensaje}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      className="w-full px-4 py-3 rounded-xl bg-[#0a0a0a] border border-white/10 focus:border-cyan-500 focus:ring-2 focus:ring-cyan-500/20 outline-none transition-all resize-none text-white placeholder-gray-500"
-                      placeholder="Cuéntanos sobre tu proyecto o necesidad..."
-                    />
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                      <Phone className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Teléfono</h4>
+                      <p className="text-gray-400">+58 424-3222919</p>
+                    </div>
                   </div>
 
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full inline-flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-black py-4 rounded-xl font-semibold transition-all hover-lift disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin" />
-                        Enviando...
-                      </>
-                    ) : (
-                      <>
-                        <Send className="w-5 h-5" />
-                        Enviar Mensaje
-                      </>
-                    )}
-                  </button>
-                </form>
-              </div>
-            </motion.div>
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                      <MapPin className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Dirección</h4>
+                      <p className="text-gray-400">Maracay, Estado Aragua</p>
+                      <p className="text-sm text-gray-500">Avenida Intercomunal</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-xl bg-cyan-500/10 flex items-center justify-center shrink-0">
+                      <Clock className="w-6 h-6 text-cyan-400" />
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-white mb-1">Horario</h4>
+                      <p className="text-gray-400">Lun-Vie: 7:00am - 5:00pm</p>
+                      <p className="text-sm text-gray-500">Sábados: 8:00am - 12:00pm</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Map Placeholder */}
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center border border-white/5"
+              >
+                <div className="text-center">
+                  <MapPin className="w-12 h-12 text-cyan-400/30 mx-auto mb-2" />
+                  <p className="text-gray-400">Maracay, Aragua</p>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
