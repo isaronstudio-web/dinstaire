@@ -27,6 +27,9 @@ export default function RootLayoutEn({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable} ${poppins.variable}`}>
+      <head>
+        <link rel="icon" href="/proyectos/logo.jpg" type="image/jpeg" />
+      </head>
       <body className="font-body bg-background text-foreground antialiased">
         <SmoothScroll>
           <Navbar />

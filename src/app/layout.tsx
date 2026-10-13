@@ -44,6 +44,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="es" className={`${inter.variable} ${playfair.variable} ${poppins.variable}`}>
+      <head>
+        <link rel="icon" href="/proyectos/logo.jpg" type="image/jpeg" />
+      </head>
       <body className="font-body bg-background text-foreground antialiased">
         <SmoothScroll>
           <Navbar />

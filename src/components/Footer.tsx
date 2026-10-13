@@ -20,16 +20,16 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <Snowflake className="w-6 h-6 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-primary flex items-center justify-center overflow-hidden">
+                <img src="/proyectos/logo.jpg" alt="Dinstaire" className="w-full h-full object-cover" />
               </div>
               <div>
                 <span className="font-display text-xl font-bold">Dinstaire</span>
-                <p className="text-xs text-gray-400">C.A.</p>
+                <p className="text-xs text-cyan-400">Clima Confiable Siempre</p>
               </div>
             </div>
-            <p className="text-gray-300 mb-4">
-              "Clima confiable siempre"
+            <p className="text-cyan-400 font-medium mb-4">
+              "Clima Confiable Siempre"
             </p>
             <p className="text-sm text-gray-400">
               Más de 40 años de experiencia en climatización profesional en Maracay, Venezuela.
