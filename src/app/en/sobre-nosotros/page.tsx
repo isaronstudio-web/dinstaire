@@ -131,7 +131,7 @@ export default function SobreNosotrosPageEN() {
                   <h4 className="font-semibold text-white">Certifications</h4>
                 </div>
                 <p className="text-sm text-gray-300">
-                  We have ISO 9001 certification and all our technicians are certified to guarantee professional quality work.
+                  We have certified technicians and more than 40 years of experience guaranteeing professional quality work.
                 </p>
               </div>
             </motion.div>

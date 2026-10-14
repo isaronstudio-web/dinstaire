@@ -131,7 +131,7 @@ export default function SobreNosotrosPage() {
                   <h4 className="font-semibold text-white">Certificaciones</h4>
                 </div>
                 <p className="text-sm text-gray-300">
-                  Contamos con certificación ISO 9001 y todos nuestros técnicos están certificados para garantizar trabajos de calidad profesional.
+                  Contamos con técnicos certificados y más de 40 años de experiencia garantizando trabajos de calidad profesional.
                 </p>
               </div>
             </motion.div>

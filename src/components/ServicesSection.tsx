@@ -115,7 +115,7 @@ export default function ServicesSection() {
             destacándola como una excelente opción técnica que garantiza eficiencia y durabilidad en cada proyecto.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {["Certificación ISO 9001", "Garantía Extendida", "Soporte técnico 24/7"].map((item) => (
+            {["Técnicos Certificados", "Garantía Extendida", "Soporte técnico 24/7"].map((item) => (
               <div key={item} className="flex items-center gap-2 bg-cyan-500/10 px-4 py-2 rounded-lg border border-cyan-500/20">
                 <span className="text-cyan-400 text-sm font-medium">{item}</span>
               </div>

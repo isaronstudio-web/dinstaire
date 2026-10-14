@@ -5,30 +5,24 @@ import Lenis from "lenis";
 
 export default function SmoothScroll({ children }: { children: ReactNode }) {
   useEffect(() => {
+    // Detect device type
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    const isMobile = window.innerWidth < 768;
+
     const lenis = new Lenis({
-      // Scroll más pesado y premium
-      duration: 2.5, // Más lento = más pesado
+      // Scroll MUCHO más pesado y premium
+      duration: isMobile ? 2.8 : 3.5, // Mucho más lento = sensación de peso premium
       easing: (t) => {
-        // Easing más suave y gradual
-        return 1 - Math.pow(1 - t, 4);
+        // Easing ultra suave y gradual
+        return 1 - Math.pow(1 - t, 5);
       },
       orientation: "vertical",
       gestureOrientation: "vertical",
       smoothWheel: true,
-      wheelMultiplier: 0.6, // Reduce sensibilidad del mouse
-      touchMultiplier: 1.2, // Touch más controlado
-      lerp: 0.08, // Interpolación lineal más lenta
+      wheelMultiplier: isMobile ? 0.4 : 0.35, //MUY poco sensible al mouse = scroll más duro
+      touchMultiplier: isMobile ? 0.8 : 1.0, // Touch muy controlado
+      lerp: 0.05, // Interpolación muy lenta para sensación de peso
     });
-
-    // Ajustar según el dispositivo
-    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-    
-    if (isTouchDevice) {
-      // Para móviles: scroll más liviano pero still smooth
-      lenis.options.duration = 1.8;
-      lenis.options.wheelMultiplier = 0.8;
-      lenis.options.touchMultiplier = 1.5;
-    }
 
     function raf(time: number) {
       lenis.raf(time);
