@@ -9,7 +9,9 @@ const navLinks = [
   { href: "/", label: "Inicio" },
   { href: "/servicios", label: "Servicios" },
   { href: "/tienda", label: "Tienda" },
+  { href: "/calculadora-btu", label: "Calculadora" },
   { href: "/proyectos", label: "Proyectos" },
+  { href: "/sobre-nosotros", label: "Nosotros" },
   { href: "/contacto", label: "Contacto" },
   { href: "/admin", label: "🔧 Admin" },
 ];
@@ -18,7 +20,9 @@ const navLinksEN = [
   { href: "/", label: "Home" },
   { href: "/servicios", label: "Services" },
   { href: "/tienda", label: "Store" },
+  { href: "/calculadora-btu", label: "BTU Calc" },
   { href: "/proyectos", label: "Projects" },
+  { href: "/sobre-nosotros", label: "About" },
   { href: "/contacto", label: "Contact" },
   { href: "/admin", label: "🔧 Admin" },
 ];
