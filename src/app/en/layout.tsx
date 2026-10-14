@@ -5,6 +5,7 @@ import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEO from "@/components/SEO";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap" });
@@ -31,6 +32,7 @@ export default function RootLayoutEn({
         <link rel="icon" href="/proyectos/logo.jpg" type="image/jpeg" />
       </head>
       <body className="font-body bg-background text-foreground antialiased">
+        <SEO />
         <SmoothScroll>
           <Navbar />
           <main className="min-h-screen">
